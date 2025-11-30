@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Background & Text Changer</title>
+  <style>
+    #box {
+      width: 300px;
+      padding: 20px;
+      margin-top: 20px;
+      background-color: lightgray;
+      border: 1px solid #333;
+      font-size: 18px;
+    }
+    input {
+      margin: 5px 0;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="color-input" placeholder="Enter a color name">
+  <br>
+  <input type="text" id="text-input" placeholder="Enter text to update">
+  <br><br>
+
+  <button id="bg-btn">Change Background</button>
+  <button id="text-btn">Update Text</button>
+
+  <div id="box">
+    This is the initial content of the box.
+  </div>
+
+  <script>
+    const box = document.getElementById("box");
+    const bgBtn = document.getElementById("bg-btn");
+    const textBtn = document.getElementById("text-btn");
+
++    bgBtn.addEventListener("click", () => {
+      const color = document.getElementById("color-input").value.trim();
+
+      const testDiv = document.createElement("div");
+      testDiv.style.backgroundColor = color;
+
+      if (testDiv.style.backgroundColor) {
+        box.style.backgroundColor = color;
+      } else {
+        alert("Invalid color name!");
+      }
+    });
+
+    textBtn.addEventListener("click", () => {
+      const newText = document.getElementById("text-input").value.trim();
+
+      if (newText === "") {
+        alert("Please enter some text!");
+      } else {
+        box.textContent = newText;
+      }
+    });
+  </script>
+
+</body>
+</html>
